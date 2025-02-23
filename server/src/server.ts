@@ -17,6 +17,12 @@ async function startServer() {
   // Sync Database
   await sequelize.sync({ alter: true });
 
+  // express routes
+
+  app.get("/", (req, res) => {
+    res.send("Hello World");
+  });
+
   // Start Express Server
   const PORT = process.env.PORT || 4000;
   app.listen(PORT, () => {
@@ -25,3 +31,4 @@ async function startServer() {
 }
 
 startServer().catch((err) => console.error("❌ Error starting server:", err));
+
